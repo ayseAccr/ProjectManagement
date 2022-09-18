@@ -18,26 +18,33 @@
 </head>
 <body>
     
+    <h4>Projects</h4>
 
-  <h4>Projects</h4>
 
-   <table>
-    <thead>   
-     <th>project name</th>
-     <th>project stage</th>
-    </thead>
-   <tbody>
-        <tr th:each="tempProject : ${projectsList}">
-
+    <table>
+    
+    <tbody>
+         <tr  th:each="temp:${projectsList}">  
+             <td th:text="${temp.projectDescription}"/>  
+             <td th:text="${temp.projectName}"/>
+             <td th:text="${temp.stage}"/>
            
-            <td th:text="${tempProject.stage"/>
-            <td th:text="${tempProject.description"/>
-        </tr>
-    </tbody>
-
-
-   </table>
-
+         </tr>
+     </tbody>
+ 
+ 
+    </table>
+ 
+ <table>
+     <tbody>
+      <tr th:each="t:${employeesList}">
+            
+           <td th:text="${t.firstName}"/>  
+      </tr>
+ 
+     </tbody>
+ </table>
+ 
 
 
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet"
+         th:href="@{/webjars/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css}" />
+      <link th:rel="stylesheet"
+         th:href="@{/webjars/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.css}" />
+      <link th:rel="stylesheet"
+         th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}" />
+      <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+      <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+     
+    <link href="../static/css/custom-styles.css" rel="stylesheet" type="text/css"/>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container">
+     <form action="/projects/save" th:object:"${project}" method="POST">
+
+   <input type="text" placeholder="Project Name" th:field="${project.projectName}">
+
+     <select th:field="${project.stage}">
+        <option th:each="StageOpt : ${T(com.ex.demo.Model.Project.StageType).values()}" 
+            th:value="${StageOpt}" 
+            th:text="${StageOpt}">
+        </option>
+    </select>
+    <textarea type="text" placeholder="enter project description" th:field="${project.projectDescription}"></textarea> 
+    <button type="submit">Create a new project</button>
+
+    </form>
+    </div>
+
+</body>
+</html> 

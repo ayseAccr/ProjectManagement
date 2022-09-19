@@ -20,7 +20,7 @@
     
     <h4>Projects</h4>
 
-
+   
     <table>
     
     <tbody>
@@ -28,7 +28,12 @@
              <td th:text="${temp.projectDescription}"/>  
              <td th:text="${temp.projectName}"/>
              <td th:text="${temp.stage}"/>
-           
+             <!-- <td th:text="${temp.employees}"/> -->
+            
+             <tr th:each="temp2:${temp.employees}">
+               <td th:text="${temp2.firstName}"/>
+             </tr>
+
          </tr>
      </tbody>
  

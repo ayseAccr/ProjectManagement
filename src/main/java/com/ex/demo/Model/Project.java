@@ -1,6 +1,8 @@
 package com.ex.demo.Model;
 
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,9 +14,12 @@ public class Project {
     private String projectName;
     private String projectDescription;
     private StageType stage;
-
-
+    
+    @OneToMany(mappedBy="theProject")  //many employees can connect to one project
+    private List<Employee> employees;
+    
     public enum StageType{
+
         COMPLETED("COMPLETED"),
         NOTSTARTED("NOTSTARTED"),
         INPROGRESS("INPROGRESS");
@@ -80,6 +85,16 @@ public class Project {
 
     public void setStage(StageType stage) {
         this.stage = stage;
+    }
+
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
     
 

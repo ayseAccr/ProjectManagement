@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" href="/bootstrap-4.0.0/css/bootstrap.min.css" />
+    <script src="/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+    <link th:rel="stylesheet"
+       th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <link href="../static/css/custom-styles.css" rel="stylesheet" type="text/css"/> 
+</head>
+<body>
+  <div class="container" align="center">
+        <div class="card" style="width: 18rem;" >
+           <ul class="list-group list-group-flush" th:each="e:${AllEmployeesList}">
+            
+           <li class="list-group-item" th:text="${e.firstName}"></li>
+           <li class="list-group-item" th:text="${e.employeeId}"></li>
+          
+           <!-- <button class="btn btn-success" onclick="location.href='employee-update.html'"></button>update employee</button> -->
+           <a onclick="location.href='employee-update'" class="btn btn-success">View</a>
+           </ul>
+        </div>,
+    </div>
+
+   </div>
+   <!-- <tr th:each="e:${AllEmployeesList}">
+    <td th:text="${e.firstName}"></td>
+    </tr> -->
+
+
+
+
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+    
+</body>
+
+</html>

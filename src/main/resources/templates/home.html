@@ -23,59 +23,72 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
     <title>Document</title>
 </head>
 <body>
-    <div>
-    <table class="table table dark ">
-    <h4>Projects</h4>
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">name</th>
-            <th scope="col">projectDescription</th>
-            <th scope="col">stage</th>
-           
-          </tr>
-    </thead>
     
+    
+    
+
+    <div class="container">
+        <h1 class="bold">projectsList</h1>
+      <div id="accordion">
+          <tr th:each="temp ,iterStat :${projectsList}">
+        <div class="card" >
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <th th:text="${temp.projectId}"/>
+                <td th:text="${temp.projectName}">
+              </button>
+            </h5>
+        </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                   
+                   <table class="table table dark ">
+
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">name</th>
+                        <th scope="col">projectDescription</th>
+                        <th scope="col">stage</th>
+                       
+                      </tr>
+                        <th th:text="${temp.projectId}"/>
+                        <td th:text="${temp.projectName}"/>
+                        <td th:text="${temp.projectDescription}"/>  
+                        <td th:text="${temp.stage}"/>
+                        <!-- <td th:text="${iterStat.index}"/> -->
+                   </table>
+                
+            </div>
+          </div>
+      </div>
+       </tr>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
    
-    
-        <tbody>
-         <tr  th:each="temp ,iterStat :${projectsList}">
-             <th th:text="${temp.projectId}"></th>
-             <td th:text="${temp.projectName}"/>
-             <td th:text="${temp.projectDescription}"/>  
-             <td th:text="${temp.stage}"/>
-             <td th:text="${iterStat.index}"/></td>
 
-
-             <!-- <td th:text="*{temp.employees[__${iterStat.index}__]}"></td>  -->
-            
-             <!-- <tr th:each="index : ${#numbers.sequence( 0, #arrays.length(List1)-1)}">
-                <td th:text="${List1[index]>List1Elm1</td>
-                <td th:text="${List2[index]>List2Elm1</td>
-            </tr> -->
-
-            
-                <!-- <div  th:each="year, ystat : ${data.years}"> 
-                <input type="text" th:field="*{years[__${ystat.index}__].insurance[__${stat.index}__].name}"></input> -->
-
-         </tr>
-     </tbody>
- 
- 
-    </table>
-    </div>
-
+   <div class="container">
     <div class="col-md-4" >
+      <canvas id="myPieChart" height="30" width="30"></canvas>
 
-      <canvas id="myPieChart" height="10" width="10"></canvas>
-
+       </div>
     </div>
 
 
-
-
-
- <table>
+ 
+    <!-- <div class="container" align="center">
+ <table class="table table dark ">
      <tbody>
       <tr th:each="t:${employeesList}">
             
@@ -84,17 +97,21 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
  
      </tbody>
  </table>
+</div>
+  -->
+    
+    
+    
 
- <div>
-    
-    
-    
- </div>
  
 
 
 
  <script type="text/javascript" th:src="@{js/myPieChart.js}"></script>
+ <script>$('.collapse').collapse()
+
+
+</script>
 
 
 
@@ -108,3 +125,4 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
 
 </body>
 </html>
+

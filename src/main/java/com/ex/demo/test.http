@@ -1,0 +1,6 @@
+
+
+GET http://localhost:8085/employees/all HTTP/1.1
+
+
+GET http://localhost:8085/employees/all/3 HTTP/1.1

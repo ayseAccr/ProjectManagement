@@ -15,7 +15,7 @@ public class Project {
     private String projectDescription;
     private StageType stage;
     
-    @OneToMany(mappedBy="theProject")  //many employees can connect to one project
+    @OneToMany(mappedBy="theProject",cascade={CascadeType.REMOVE})  //many employees can connect to one project
     private List<Employee> employees;
     
     public enum StageType{

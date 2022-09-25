@@ -68,6 +68,10 @@ public class Employee {
         this.theProject = theProject;
     }
 
+    public Employee get() {
+        return null;
+    }
+
 
     
  

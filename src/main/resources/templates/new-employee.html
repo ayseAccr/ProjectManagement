@@ -32,7 +32,10 @@
             <form action="/employees/save" th:object:"${employee}" method="POST">
              <input type="text" placeholder="employee Name" th:field="${employee.firstName}">
              <input type="text" placeholder="employee last Name" th:field="${employee.lastName}">
-             <input type="text" placeholder="email" th:field="${employee.email}"> 
+             <input type="text" placeholder="email" th:field="${employee.email}">
+
+             <!-- I should get projects list from database
+                <input type="text" placeholder="project" th:field="${employee.theProject}">  -->
              <button type="submit">Create a new employee</button>
             </form>
        </div>

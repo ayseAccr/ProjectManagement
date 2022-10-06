@@ -8,16 +8,23 @@
 </head>
 <body>
     <div class="container">
-        
-        <form action="/employee/{employeeId}" th:object:"${employee}" method="POST">
-
-            <input type="text" placeholder="employee last Name" th:field="${employee.lastName}">
-            <input type="text" placeholder="email" th:field="${employee.email}"> 
-            <button type="submit">Create a new employee</button>
-            ogom
-        </form>
+        <h1 class="text-center"> update task </h1>
+        <div class="col-md-6">
+             
+                
+            <div class="form-group">
+                <form action ="#" th:action="@{edit/{id}(id=${employeeId})}" th:object="${employee}" method="PUT" >
+           <label>description</label>  
+           
+           <input class="form-control" type="text" th:field="${employee.firstName}"id="name" placeholder="name">
+           <input class="form-control" type="text" th:field="${employee.lastName}"id="name" placeholder="name"> 
+            <input class="form-control" type="text" th:field="${employee.email}"id="name" placeholder="name"> 
+          <input class="form-control" type="text" th:object="${employee.theProject}"id="name" placeholder="projectId"/>  
+          <button type="submit">update employee</button>
+                </form>
+           
     </div>
-
+    </div>
 
 
 

@@ -30,8 +30,7 @@ public class EmployeeController {
         model.addAttribute("AllEmployeesList",employeeService.findAll());
         //return employeeService.findAll();
         return "employee-page";
-
-        
+  
     }
 
     @GetMapping("/new") 
@@ -42,25 +41,28 @@ public class EmployeeController {
     }
 
     @PostMapping("/save")
-    public String createEmployee(Employee employee,Model model){
+    public String createEmployee(Employee employee){
         
        employeeService.saveOneEmployee(employee);
        //use a redirect to prevent dublicate submission
        return "redirect:/employees/new";
     }
 
-    @GetMapping("/all/{employeeId}")
-    public Employee getOneEmployee(@PathVariable Long employeeId){
-       return employeeService.getOneEmployee(employeeId);
+    @GetMapping("/edit/{employeeId}")
+    public String getOneEmployee(@PathVariable("employeeId")Long id,Model model){
+
+       model.addAttribute("employee",employeeService.getOneEmployee(id));
+       return "employee-update";
      
     }
   
 
-    @PutMapping("all/{employeeId}")
-    public Employee employeeUpdate(@PathVariable Long employeeId,@RequestBody Employee employee){
-        return employeeService.employeeUpdate(employeeId,employee);
-       
+    @PutMapping("edit/{employeeId}")
+    public String employeeUpdate(@PathVariable Long employeeId,@RequestBody Employee employee){
+        employeeService.employeeUpdate(employeeId,employee);
+        return "employee-update";
     }
+  
 
     @DeleteMapping("/{employeeId}")
     public String deleteOneUser(@PathVariable Long employeeId){

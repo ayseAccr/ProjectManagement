@@ -35,12 +35,12 @@ public class EmployeeService {
     }
     
     public Employee employeeUpdate(Long employeeId, Employee updateEmployee) {
-      
        Optional<Employee> employee =employeeRepo.findById(employeeId);
        Employee foundEmployee = employee.get();
        foundEmployee.setFirstName(updateEmployee.getFirstName());
        foundEmployee.setLastName(updateEmployee.getLastName());
        foundEmployee.setEmail(updateEmployee.getEmail());
+       foundEmployee.setTheProject(updateEmployee.getTheProject());
        employeeRepo.save(foundEmployee);
        return foundEmployee;
     }

@@ -34,7 +34,7 @@ rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/Uj
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <link href="../static/css/custom-styles.css" rel="stylesheet" type="text/css"/> 
-  <title>Document</title>-->
+  <title>Document</title>
 </head>
 
 <body>
@@ -64,14 +64,16 @@ rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/Uj
       </option>
     
     </select>
-    <button id="btn-switch" type="button" class="btn btn-primary" onclick="switchMultiSelect()">Multi-select</button>
+   
     <button type="submit">Create a new project</button>
+ 
 
     </form>
     </div>
+     
+      <!--Ik zal naar dit stukje code kijken -->
    
-   
-      <form action="/projects/save" th:object:"${project}" method="POST" >
+      <!-- <form action="/projects/save" th:object:"${project}" method="POST" >
         <div class="container">
         <div class="row">
           <select th:field="${project.employees}" class="selectpicker" multiple="multiple">
@@ -89,26 +91,19 @@ rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/Uj
         </div>
       </form>
    
-    
-   
-
-
-
-
-
-
+  
 
     <script type="text/javascript">
       $(document).ready(function() {
           $('#example-getting-started').multiselect();
       });
-    </script>
+    </script> -->
 
 
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
-<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+
 
 </body>
 

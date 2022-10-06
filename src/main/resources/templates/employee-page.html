@@ -25,7 +25,8 @@
            <li class="list-group-item" th:text="${e.employeeId}"></li>
           
            <!-- <button class="btn btn-success" onclick="location.href='employee-update.html'"></button>update employee</button> -->
-           <a onclick="location.href='employee-update'" class="btn btn-success">View</a>
+           <!-- <a onclick="location.href='employee-update'" class="btn btn-success">View</a> -->
+           <a class ="btn btn-info" th:href="@{/employees/edit/{id}(id=${e.employeeId})}">edit</a>  
            </ul>
         </div>,
     </div>

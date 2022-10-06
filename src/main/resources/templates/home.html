@@ -19,6 +19,8 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
       <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
       <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="/template/layout.html"></script>
+      
     <link href="../static/css/custom-styles.css" rel="stylesheet" type="text/css"/>
     <title>Document</title>
 </head>
@@ -57,6 +59,7 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
                         <td th:text="${temp.projectName}"/>
                         <td th:text="${temp.projectDescription}"/>  
                         <td th:text="${temp.stage}"/>
+                       
                         <!-- <td th:text="${iterStat.index}"/> -->
                    </table>
                 
@@ -64,19 +67,15 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
           </div>
       </div>
        </tr>
+       <a href="/projects/new">Create a new project</a>
+       <br style = "line-height:100;"> 
+       <a href="/employees/all">Look at all employees</a>
       </div>
     </div>
+   <table>
+    <td th:text="${employeeList}"></td>
+    </table>
 
-
-
-
-
-
-
-
-
-
-   
 
    <div class="container">
     <div class="col-md-4" >

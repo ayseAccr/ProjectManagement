@@ -1,29 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center"> update task </h1>
-        <div class="col-md-6">
-             
-                
-            <div class="form-group">
-                <form action ="#" th:action="@{edit/{id}(id=${employeeId})}" th:object="${employee}" method="PUT" >
-           <label>description</label>  
-           
-           <input class="form-control" type="text" th:field="${employee.firstName}"id="name" placeholder="name">
-           <input class="form-control" type="text" th:field="${employee.lastName}"id="name" placeholder="name"> 
-            <input class="form-control" type="text" th:field="${employee.email}"id="name" placeholder="name"> 
-          <input class="form-control" type="text" th:object="${employee.theProject}"id="name" placeholder="projectId"/>  
-          <button type="submit">update employee</button>
-                </form>
-           
-    </div>
+  
+        <div th:fragment="form(edit)">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-8">
+                    <form action="#" th:action="@{/employees/edit/{id}(id=${employee.employeeId})}" th:object="${employee}" method="post">
+                        <div class="row">
+                           
+                           
+                            <!-- <input class="form-control" type="text" th:field="${employee.firstName}"id="name" placeholder="name"> -->
+                            <input class="form-control" type="text" th:field="${employee.firstName}"id="name" placeholder="name">
+                            <input class="form-control" type="text" th:field="*{lastName}"id="name" placeholder="name"> 
+                            <input class="form-control" type="text" th:field="*{email}"id="name" placeholder="name"> 
+                            </div>
+                            <div class="form-group col-md-8">
+                               
+                                <td><button type="submit">update</button></td>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
 

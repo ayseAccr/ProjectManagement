@@ -3,7 +3,9 @@ package com.ex.demo.Services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ex.demo.Model.Employee;
@@ -34,15 +36,16 @@ public class EmployeeService {
        
     }
     
-    public Employee employeeUpdate(Long employeeId, Employee updateEmployee) {
+    public ResponseEntity<Employee> employeeUpdate(Long employeeId, Employee updateEmployee) {
        Optional<Employee> employee =employeeRepo.findById(employeeId);
        Employee foundEmployee = employee.get();
        foundEmployee.setFirstName(updateEmployee.getFirstName());
        foundEmployee.setLastName(updateEmployee.getLastName());
        foundEmployee.setEmail(updateEmployee.getEmail());
        foundEmployee.setTheProject(updateEmployee.getTheProject());
-       employeeRepo.save(foundEmployee);
-       return foundEmployee;
+       
+       Employee updatedEmployee =  employeeRepo.save(foundEmployee);
+       return ResponseEntity.ok(updatedEmployee);
     }
 
     public void deleteOneUser(Long employeeId) {

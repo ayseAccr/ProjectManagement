@@ -1,6 +1,9 @@
 package com.ex.demo.Controller;
 
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
+
+import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,11 +17,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ex.demo.Model.Employee;
+import com.ex.demo.Services.EmployeeNotFoundException;
 import com.ex.demo.Services.EmployeeService;
 @Controller
+
 @RequestMapping("/employees")
 public class EmployeeController {
     
@@ -52,35 +60,36 @@ public class EmployeeController {
     }
 
     @GetMapping("/edit/{employeeId}")
-    public String getOneEmployee(@PathVariable("employeeId")Long id,Model model){
+    public String showUpdateForm(@PathVariable("employeeId")Long id,Model model,RedirectAttributes ra){
 
-       model.addAttribute("employee",employeeService.getOneEmployee(id));
-       return "employee-update";
-     
+      Employee employee = employeeService.getOneEmployee(id);
+      model.addAttribute("employee",employee);
+      return "employee-update";
+       
     }
     
-    @PostMapping("/edit/{employeeId}")
-    public String employeeUpdate(@PathVariable Long employeeId,@RequestBody Employee employee,BindingResult result,Model model){
+    //@PostMapping("/edit/{employeeId}")
+    @PostMapping(value={"/edit/{employeeId}"},consumes = {"application/xml","application/json","application/x-www-form-urlencoded"}
+   )
+    public String employeeUpdate(@PathVariable("employeeId")Long id,Employee employee,BindingResult result,Model model){
+      
         if(result.hasErrors()) {
-			employee.setEmployeeId(employeeId);
+			employee.setEmployeeId(id);
 			return "employee-update";
 		}
-       employeeService.employeeUpdate(employeeId,employee);
-       model.addAttribute("employees",employeeService.findAll());
+       employeeService.employeeUpdate(id,employee);
+       model.addAttribute("employee",employeeService.findAll());
        return "redirect:/employees/all";
         
     }
   
 
-    @DeleteMapping("/{employeeId}")
+    @GetMapping("/deleteEmployee/{employeeId}")
     public String deleteOneUser(@PathVariable Long employeeId){
         employeeService.deleteOneUser(employeeId);
         return "redirect:/employees/all";
     }
         
-    // @GetMapping("/")
-    // String index(Principal principal) {
-    //     return principal != null ? "home/homeSignedIn" : "home/homeNotSignedIn";
-    // }
+   
     }
 

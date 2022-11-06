@@ -51,6 +51,15 @@ public class EmployeeService {
     public void deleteOneUser(Long employeeId) {
         employeeRepo.deleteById(employeeId);
     }
+
+    public Employee get(Long id) throws EmployeeNotFoundException {
+        Optional<Employee> result = employeeRepo.findById(id);
+        if(result.isPresent()) {
+            return result.get();
+        }
+        throw new EmployeeNotFoundException("Could not find any result"+id);
+
+    }
      
     
 }

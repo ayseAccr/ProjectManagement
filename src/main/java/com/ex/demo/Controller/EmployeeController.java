@@ -68,9 +68,7 @@ public class EmployeeController {
        
     }
     
-    //@PostMapping("/edit/{employeeId}")
-    @PostMapping(value={"/edit/{employeeId}"},consumes = {"application/xml","application/json","application/x-www-form-urlencoded"}
-   )
+    @PostMapping(value={"/edit/{employeeId}"},consumes = {"application/xml","application/json","application/x-www-form-urlencoded"})
     public String employeeUpdate(@PathVariable("employeeId")Long id,Employee employee,BindingResult result,Model model){
       
         if(result.hasErrors()) {
@@ -80,6 +78,7 @@ public class EmployeeController {
        employeeService.employeeUpdate(id,employee);
        model.addAttribute("employee",employeeService.findAll());
        return "redirect:/employees/all";
+    
         
     }
   

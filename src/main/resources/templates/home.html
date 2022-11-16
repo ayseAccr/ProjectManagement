@@ -28,7 +28,7 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
     
     
     
-
+  <div class="accordion" id="accordionExample">
     <div class="container">
         <h1 class="bold">projectsList</h1>
       <div id="accordion">
@@ -59,6 +59,13 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
                         <td th:text="${temp.projectName}"/>
                         <td th:text="${temp.projectDescription}"/>  
                         <td th:text="${temp.stage}"/>
+
+                        <!-- <td th:text="${temp.employees}"/> -->
+                       <div class="card-body">
+                        <tr th:each="temp1 ,iterStat :${temp.employees}">
+                        <td th:text="${temp1.firstName}"/>
+                       </tr>
+                       </div>
                        
                         <!-- <td th:text="${iterStat.index}"/> -->
                    </table>
@@ -70,6 +77,8 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
        <a href="/projects/new">Create a new project</a>
        <br style = "line-height:100;"> 
        <a href="/employees/all">Look at all employees</a>
+       <br style = "line-height:100;"> 
+       <a href="/employees/new">add employee</a>
       </div>
     </div>
    <table>
@@ -83,7 +92,7 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
 
        </div>
     </div>
-
+  </div>
 
  
     <!-- <div class="container" align="center">
@@ -107,7 +116,7 @@ integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466
 
 
  <script type="text/javascript" th:src="@{js/myPieChart.js}"></script>
- <script>$('.collapse').collapse()
+ <script>$('.collapseOne').collapse()
 
 
 </script>

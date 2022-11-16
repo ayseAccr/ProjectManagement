@@ -5,17 +5,30 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+@Data
 @Entity
+@ToString(exclude = "employees")
+@EqualsAndHashCode(exclude = "employees")
+@Table(name = "projects")
 public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long projectId;
+
+    @Column(nullable = false)
     private String projectName;
+
+    @Column
     private String projectDescription;
+
+    @Column
     private StageType stage;
     
-    @OneToMany(mappedBy="theProject",cascade={CascadeType.REMOVE})  //many employees can connect to one project
+    @OneToMany(mappedBy="theProject",cascade={CascadeType.REMOVE,CascadeType.MERGE,CascadeType.PERSIST})  //many employees can connect to one project
     private List<Employee> employees;
     
     public enum StageType{

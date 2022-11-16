@@ -12,7 +12,11 @@ public interface ProjectRepository extends CrudRepository<Project,Long>{
    
     @Override
     List<Project> findAll();
-    
+    @Query(nativeQuery = true,value = "SELECT EMPLOYEE_ID,employee.first_name,project.project_id"+
+    "FROM project"+
+    "LEFT JOIN employee"+
+         "ON project.project_id = employee.project_id")
+    List<Employee> findEmployees();
     
     
 }

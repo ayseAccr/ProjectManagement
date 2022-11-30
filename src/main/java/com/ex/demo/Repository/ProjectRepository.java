@@ -18,7 +18,6 @@ public interface ProjectRepository extends CrudRepository<Project,Long>{
          "ON project.project_id = employee.project_id")
     List<Employee> findEmployees();
 
-    // @Query("SELECT Project FROM Project project WHERE CONCAT(project.projectName, ' ')")
-    // List<Project> searchProject(String keyword);
+  
     
 }

@@ -2,12 +2,8 @@ package com.ex.demo.Services;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 import com.ex.demo.Model.Employee;
 import com.ex.demo.Repository.EmployeeRepository;
 
